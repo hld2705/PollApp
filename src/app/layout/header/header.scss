@@ -1,0 +1,24 @@
+@use '../../../mixins/main-mixin.scss' as mx;
+
+.header {
+    margin: 0px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 50px;
+
+    &__headerlogoplacement {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: flex-start);
+        gap: 10px;
+    }
+
+    &__headerlogotext {
+        @include mx.nerko-one();
+        @include mx.flex-center($align: center, $flex-direction: column);
+        gap: 5px;
+        margin: 0px;
+    }
+}
+
+.underheadertext {
+    @include mx.flex-center($align: center, $flex-direction: column);
+}

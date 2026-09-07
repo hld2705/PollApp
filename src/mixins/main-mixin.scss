@@ -1,0 +1,13 @@
+@mixin flex-center($flex-direction: column, $justify: center, $align: center) {
+    display: flex;
+    align-items: $align;
+    flex-direction: $flex-direction;
+    justify-content: $justify;
+}
+
+@mixin nerko-one($family: 'Nerko One', $weight: 400, $size: 26px) {
+    font-family: $family;
+    font-weight: $weight;
+    font-size: $size;
+    color: #FFB770;
+}
