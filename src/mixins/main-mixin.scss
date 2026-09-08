@@ -11,3 +11,17 @@
     font-size: $size;
     color: #FFB770;
 }
+
+@mixin mullish($size: 24px, $weight: 600) {
+    font-family: Mulish;
+    font-weight: $weight;
+    font-size: $size;
+    color: #ffff
+}
+
+@mixin nokora($size:18px, $weight: 700) {
+    font-family: Nokora;
+    font-weight: $weight;
+    font-style: Bold;
+    font-size: $size;
+}
