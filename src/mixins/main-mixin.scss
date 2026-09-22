@@ -12,11 +12,11 @@
     color: #FFB770;
 }
 
-@mixin mullish($size: 24px, $weight: 600) {
+@mixin mullish($size: 24px, $weight: 600, $color:#ffff) {
     font-family: Mulish;
     font-weight: $weight;
     font-size: $size;
-    color: #ffff
+    color: $color;
 }
 
 @mixin nokora($size:18px, $weight: 700) {
@@ -24,4 +24,17 @@
     font-weight: $weight;
     font-style: Bold;
     font-size: $size;
+}
+
+@mixin inputfield($radius: 5px 20px 5px 5px) {
+    border-radius: $radius;
+    border: none;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 12px;
+    
+    &:focus {
+        background-color: #FEE9D4;
+        outline: none;
+    }
 }

@@ -1,0 +1,159 @@
+@use '../../../../mixins/main-mixin.scss' as mx;
+
+:host {
+    @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+    min-height: 100vh;
+    background-color: white;
+}
+
+.mainbubble {
+    @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+    background-color: #35273A;
+    height: 50%;
+    width: 60%;
+    border-radius: 5px 100px 5px 5px;
+
+    &__positioning {
+        @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+        padding: 20px;
+
+    }
+}
+
+.draft {
+    width: 100%;
+
+    p {
+        @include mx.mullish($size: 16px, $weight: 600, $color: black);
+        margin: 0px;
+    }
+
+    &__bubble {
+        background-color: #FFCFA1;
+        border-top-right-radius: 14px;
+        padding-top: 3px;
+        padding-right: 12px;
+        padding-bottom: 3px;
+        padding-left: 8px;
+        gap: 10px;
+        @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
+        margin: 0px;
+        width: 10%;
+    }
+}
+
+.createnewsurveytext {
+    @include mx.flex-center($align: center, $flex-direction: row, $justify: space-around);
+    width: 100%;
+
+    p {
+        @include mx.nerko-one($family: 'Nerko One', $weight: 400, $size: 56px);
+        color: #EE9236;
+    }
+}
+
+.cancelbutton {
+    padding-top: 8px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    border-radius: 10px;
+    @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+    gap: 10px;
+    background-color: #FFB7704D;
+    cursor: pointer;
+
+    p {
+        color: white;
+        @include mx.nokora($size: 16px, $weight: 700);
+        margin: 0px;
+    }
+}
+
+.formsbubble {
+    border-radius: 5px 80px 5px 5px;
+    padding: 40px 32px;
+    gap: 64px;
+    background-color: #8E709929;
+    width: 100%;
+    @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+
+    &__leftside {
+        @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+    }
+}
+
+.surveynameform {
+    @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
+    width: 100%;
+
+    &__text {
+        @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+
+        p {
+            @include mx.mullish($size: 18px, $weight: 600, $color: #FEFDFF);
+            margin: 0px;
+        }
+    }
+
+    &__input {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+        gap: 5px;
+
+        input {
+            @include mx.inputfield();
+
+            &:focus {
+                background-color: #FEE9D4;
+
+                outline: none;
+            }
+        }
+
+        img {
+            cursor: pointer;
+        }
+    }
+}
+
+.surveyenddate {
+    width: 100%;
+
+    p {
+        @include mx.mullish($size: 18px, $weight: 600, $color: #FEFDFF);
+    }
+
+    span {
+        @include mx.mullish($size: 15px, $weight: 400, $color: #FEFDFF);
+    }
+
+    &__text {
+        @include mx.flex-center($align: flex-start, $flex-direction: row, $justify: space-between);
+        min-width: 122%;
+
+        &--category {
+            @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+            gap: 15px;
+        }
+
+        p,
+        span {
+            margin: 0px;
+            margin-top: 10px;
+        }
+
+        &--date {
+
+            gap: 15px;
+        }
+    }
+
+    &__input {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+        gap: 5px;
+
+        input {
+            @include mx.inputfield();
+        }
+    }
+}

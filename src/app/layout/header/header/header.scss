@@ -1,4 +1,4 @@
-@use '../../../mixins/main-mixin.scss' as mx;
+@use '../../../../mixins/main-mixin.scss' as mx;
 
 .header {
     margin: 0px;
@@ -78,13 +78,24 @@
 
     &__newsurveybutton {
         cursor: pointer;
-        padding: 10px;
+        padding: 15px;
         gap: 10px;
         @include mx.flex-center($align: center, $justify: center, $flex-direction: row);
         border-radius: 10px;
         background-color: #FFCFA1;
         @include mx.nokora();
+        border: 0px;
+        transition: ease-in-out 0.3s;
+        img {
+            width: 0px;
+            transition: ease-in-out 0.3s;
+        }
+
+        &:hover{
+            background-color: #FFB770;
+            img{
+                width: 20px;
+            }
+        }
     }
-
-
 }
