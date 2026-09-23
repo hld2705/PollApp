@@ -26,10 +26,10 @@
     font-size: $size;
 }
 
-@mixin inputfield($radius: 5px 20px 5px 5px) {
+@mixin inputfield($radius: 5px 20px 5px 5px, $padding-top: 7px) {
     border-radius: $radius;
     border: none;
-    padding-top: 7px;
+    padding-top: $padding-top;
     padding-bottom: 7px;
     padding-left: 12px;
     
