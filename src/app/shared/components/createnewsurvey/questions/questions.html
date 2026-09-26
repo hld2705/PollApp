@@ -1,0 +1,16 @@
+@for (question of questions; track question.questionNumber) {
+<div class="questions">
+    <div class="questions__text">
+        <p>{{ question.questionNumber }}. Question</p>
+        <img src="/assets/delete.svg">
+    </div>
+    <input>
+    @for(question of questions; track question.answerNumber) {
+    <div class="answers">
+        <div class="answers__text">
+            <div></div>
+        </div>
+    </div>
+    }
+</div>
+}

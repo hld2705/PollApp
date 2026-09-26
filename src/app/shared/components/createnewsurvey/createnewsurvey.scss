@@ -79,7 +79,7 @@
     @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
 
     &__leftside {
-        @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+        @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
     }
 }
 
