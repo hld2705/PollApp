@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { QuestionInterface } from '../../../interfaces/questionanswersinterface';
+import { numberToLetter } from '../../../pipes/pipes';
 
 @Component({
   selector: 'app-questions',
-  imports: [],
+  imports: [numberToLetter],
   templateUrl: './questions.html',
   styleUrl: './questions.scss',
 })
@@ -14,7 +15,7 @@ export class Questions {
       questionNumber: 1,
       text: '',
       multipleAnswers: false,
-      answerNumber: 1,
+      answerNumber: 0,
       answers: ['']
     }
   ];

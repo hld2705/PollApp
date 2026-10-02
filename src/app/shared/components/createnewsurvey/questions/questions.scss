@@ -15,12 +15,72 @@
     &__text {
         @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
         min-width: 120%;
+
         p {
             @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
-
+            margin: 0px;
         }
+
         img {
             cursor: pointer;
         }
     }
+}
+
+.answers {
+    min-width: 120%;
+    @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: flex-start);
+
+    &__text {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
+        @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
+        width: 100%;
+        margin: 0px;
+
+        &--checkbox {
+            @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
+
+            p {
+                @include mx.mullish($size: 14px, $weight: 400, $color: #FFFF);
+
+            }
+        }
+    }
+
+    &__input {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
+        @include mx.inputfield();
+        gap: 5px;
+        padding-left: 0px;
+
+        p {
+            @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
+            margin: 0px;
+        }
+
+        img {
+            cursor: pointer;
+        }
+    }
+
+    &__addnewanswer {
+        padding-left: 30px;
+        cursor: pointer;
+
+        p {
+            @include mx.nokora($size: 16px, $weight: 500);
+            color: #ffff;
+            font-style: normal;
+            margin: 0px;
+        }
+
+        &--borderbottom {
+            border-bottom: 1px solid white;
+            @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
+            gap: 10px;
+            margin-top: 15px;
+        }
+    }
+
+
 }

@@ -5,12 +5,28 @@
         <img src="/assets/delete.svg">
     </div>
     <input>
-    @for(question of questions; track question.answerNumber) {
+
     <div class="answers">
         <div class="answers__text">
-            <div></div>
+            <p>Answers</p>
+            <div class="answers__text--checkbox">
+                <img src="/assets/checkbox.svg">
+                <p>Allow multiple answers.</p>
+            </div>
+        </div>
+        @for(question of questions; track question.answerNumber) {
+        <div class="answers__input">
+            <p>{{ question.answerNumber | numberToLetter }}.</p>
+            <input>
+            <img src="/assets/delete.svg">
+        </div>
+        }
+        <div class="answers__addnewanswer">
+            <div class="answers__addnewanswer--borderbottom">
+            <p>Add answer</p>
+            <img src="/assets/add_circle.svg">
+            </div>
         </div>
     </div>
-    }
 </div>
 }
