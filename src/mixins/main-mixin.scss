@@ -12,14 +12,14 @@
     color: #FFB770;
 }
 
-@mixin mullish($size: 24px, $weight: 600, $color:#ffff) {
+@mixin mullish($size: 24px, $weight: 600, $color: #ffff) {
     font-family: Mulish;
     font-weight: $weight;
     font-size: $size;
     color: $color;
 }
 
-@mixin nokora($size:18px, $weight: 700) {
+@mixin nokora($size: 18px, $weight: 700) {
     font-family: Nokora;
     font-weight: $weight;
     font-style: Bold;
@@ -32,9 +32,53 @@
     padding-top: $padding-top;
     padding-bottom: 7px;
     padding-left: 12px;
-    
+
     &:focus {
         background-color: #FEE9D4;
         outline: none;
     }
+}
+
+@mixin deleteicon($invert-on-hover: true) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    &:hover {
+        background-color: #ffd4a9;
+    }
+
+
+    @if $invert-on-hover {
+        &:hover img {
+            filter: invert(1);
+            width: 20px;
+            height: 20px;
+            display: block;
+
+        }
+    }
+}
+
+@mixin checkbox() {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    border: 1.5px solid #FFFFFF;
+    padding: 0px;
+    appearance: none;
+
+    &:checked {
+        background-image: url('/assets/checkbox_checked.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: none;
+    }
+
 }

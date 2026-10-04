@@ -2,7 +2,9 @@
 <div class="questions">
     <div class="questions__text">
         <p>{{ question.questionNumber }}. Question</p>
-        <img src="/assets/delete.svg">
+        <div class="delete-icon">
+            <img src="/assets/delete.svg">
+        </div>
     </div>
     <input>
 
@@ -10,7 +12,7 @@
         <div class="answers__text">
             <p>Answers</p>
             <div class="answers__text--checkbox">
-                <img src="/assets/checkbox.svg">
+                <input type="checkbox">
                 <p>Allow multiple answers.</p>
             </div>
         </div>
@@ -18,13 +20,15 @@
         <div class="answers__input">
             <p>{{ question.answerNumber | numberToLetter }}.</p>
             <input>
-            <img src="/assets/delete.svg">
+            <div class="delete-icon">
+                <img src="/assets/delete.svg">
+            </div>
         </div>
         }
         <div class="answers__addnewanswer">
             <div class="answers__addnewanswer--borderbottom">
-            <p>Add answer</p>
-            <img src="/assets/add_circle.svg">
+                <p>Add answer</p>
+                <img src="/assets/add_circle.svg">
             </div>
         </div>
     </div>

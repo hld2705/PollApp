@@ -21,10 +21,16 @@
             margin: 0px;
         }
 
-        img {
-            cursor: pointer;
+        .delete-icon {
+            @include mx.deleteicon();
         }
     }
+}
+
+.delete-icon img {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
 
 .answers {
@@ -37,12 +43,25 @@
         width: 100%;
         margin: 0px;
 
+
+
         &--checkbox {
             @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
 
             p {
                 @include mx.mullish($size: 14px, $weight: 400, $color: #FFFF);
 
+            }
+
+            input {
+                @include mx.checkbox();
+                margin-right: 10px;
+                min-width: auto;
+                cursor: pointer;
+            }
+
+            &:hover input {
+                background-color: #FFCFA199;
             }
         }
     }
@@ -58,10 +77,11 @@
             margin: 0px;
         }
 
-        img {
-            cursor: pointer;
+        .delete-icon {
+            @include mx.deleteicon();
         }
     }
+
 
     &__addnewanswer {
         padding-left: 30px;
@@ -81,6 +101,5 @@
             margin-top: 15px;
         }
     }
-
 
 }

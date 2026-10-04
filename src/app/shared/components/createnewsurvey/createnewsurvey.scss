@@ -12,6 +12,7 @@
     border-radius: 5px 100px 5px 5px;
     margin-top: 10px;
     margin-bottom: 10px;
+
     &__positioning {
         @include mx.flex-center($align: flex-end, $flex-direction: column, $justify: center);
         padding: 20px;
@@ -52,6 +53,8 @@
         @include mx.nerko-one($family: 'Nerko One', $weight: 400, $size: 56px);
         color: #EE9236;
     }
+
+
 }
 
 .cancelbutton {
@@ -72,6 +75,10 @@
     }
 }
 
+.cancelbutton:hover {
+    background-color: #ae7e5a;
+}
+
 .formsbubble {
     border-radius: 5px 80px 5px 5px;
     padding: 40px 20px;
@@ -88,6 +95,7 @@
 .surveynameform {
     @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
     width: 100%;
+    margin-bottom: 10px;
 
     &__text {
         @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
@@ -114,10 +122,16 @@
             }
         }
 
-        img {
-            cursor: pointer;
+        .delete-icon {
+            @include mx.deleteicon();
         }
     }
+}
+
+.delete-icon img {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
 
 .surveyenddate {
@@ -138,13 +152,27 @@
         &--category {
             @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
             gap: 15px;
+            cursor: pointer;
+            padding: 5px;
         }
+
+        &--category:hover {
+            background-color: #55475a;
+            border-radius: 6px;
+        }
+
+        &--category:hover span {
+            color: #ffb770;
+        }
+
+        margin-top: 13px;
 
         p,
         span {
             margin: 0px;
-            margin-top: 10px;
         }
+
+
 
         &--date {
 
@@ -158,6 +186,10 @@
 
         input {
             @include mx.inputfield();
+        }
+
+        .delete-icon {
+            @include mx.deleteicon();
         }
     }
 }
@@ -184,15 +216,17 @@
             margin: 0px;
         }
 
-        img {
-            cursor: pointer;
+        .delete-icon {
+            @include mx.deleteicon();
         }
     }
 }
 
 .formsbubblerightside {
-    padding-left: 70px;
+    margin-left: 70px;
     @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: flex-start);
+
+
 
     p {
         @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
@@ -213,6 +247,10 @@
             padding-left: 13px;
             gap: 10px;
         }
+
+        .delete-icon {
+            @include mx.deleteicon();
+        }
     }
 
     &__button {
@@ -231,6 +269,10 @@
             @include mx.nokora($size: 16px, $weight: 400);
             margin: 0px;
         }
+
+        &:hover {
+            background-color: #ae7e5a;
+        }
     }
 }
 
@@ -244,9 +286,24 @@
     background-color: #FFCFA1;
     cursor: pointer;
     margin-top: 30px;
-
+    @include mx.flex-center($align: center, $justify: center, $flex-direction: row);
     p {
         @include mx.nokora($size: 16px, $weight: 400);
         margin: 0px;
+    }
+
+    transition: ease-in-out 0.3s;
+
+    img {
+        width: 0px;
+        transition: ease-in-out 0.3s;
+    }
+
+    &:hover {
+        background-color: #FFB770;
+
+        img {
+            width: 20px;
+        }
     }
 }
