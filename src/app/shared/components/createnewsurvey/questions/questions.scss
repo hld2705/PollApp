@@ -66,11 +66,18 @@
         }
     }
 
+
     &__input {
         @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
         @include mx.inputfield();
         gap: 5px;
         padding-left: 0px;
+        transition: opacity 0.2s ease;
+
+        &--disabled {
+            opacity: 0.35;
+            pointer-events: none;
+        }
 
         p {
             @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
@@ -82,10 +89,10 @@
         }
     }
 
-
     &__addnewanswer {
         padding-left: 30px;
         cursor: pointer;
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
 
         p {
             @include mx.nokora($size: 16px, $weight: 500);
@@ -100,6 +107,11 @@
             gap: 10px;
             margin-top: 15px;
         }
-    }
 
+        &--warningmessage {
+            p {
+                @include mx.mullish($size: 14px, $weight: 400, $color: #FEFDFF);
+            }
+        }
+    }
 }

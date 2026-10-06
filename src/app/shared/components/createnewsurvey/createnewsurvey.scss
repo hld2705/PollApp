@@ -288,7 +288,7 @@
     margin-top: 30px;
     @include mx.flex-center($align: center, $justify: center, $flex-direction: row);
     p {
-        @include mx.nokora($size: 16px, $weight: 400);
+        @include mx.nokora($size: 16px, $weight: 700);
         margin: 0px;
     }
 
