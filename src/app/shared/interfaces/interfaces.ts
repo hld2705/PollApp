@@ -5,3 +5,7 @@ export interface QuestionInterface {
   answerNumber:number;
   answers: string[];
 }
+
+export interface Category{
+  category: string[];
+}

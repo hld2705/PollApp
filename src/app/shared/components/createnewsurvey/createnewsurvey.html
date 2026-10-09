@@ -14,54 +14,71 @@
         </div>
 
         <div class="formsbubble">
-            <div class="formsbubble__leftside">
-                <div class="surveynameform">
-                    <div class="surveynameform__text">
-                        <p>Survey name</p>
+            <div class="formsbubble__top">
+                <div class="formsbubble__leftside">
+                    <div class="surveynameform">
+                        <div class="surveynameform__text">
+                            <p>Survey name</p>
+                        </div>
+                        <div class="surveynameform__input">
+                            <input>
+                            <div class="delete-icon">
+                                <img src="/assets/delete.svg">
+                            </div>
+                        </div>
                     </div>
-                    <div class="surveynameform__input">
+                    <div class="surveyenddate">
+                        <div class="surveyenddate__text">
+                            <div class="surveyenddate__text--date">
+                                <p>Set end date <span>(optional)</span></p>
+                                <div class="surveyenddate__input">
+                                    <input>
+                                    <div class="delete-icon">
+                                        <img src="/assets/delete.svg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="surveyenddate__text--category" (click)="toggleMenu()">
+                                <div class="surveyenddate__text--category">
+                                    <p>Choose category</p>
+                                    @if(menuOpen){
+                                    <span>▲</span>
+                                    }@else{
+                                    <span>▼</span>
+                                    }
+                                </div>
+                                @if(menuOpen){
+                                <div class="dropdowncategorymenu">
+                                    @for(category of categories; track category){
+                                    <p (click)="$event.stopPropagation(); chooseCategory(category)">
+                                        {{ category }}
+                                    </p>
+                                    }
+                                </div>}
+                                <p class="surveyenddate__text--choosencategory">{{category}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="formsbubblerightside">
+                    <div class="formsbubblerightside__text">
+                        <p>Describing text <span>(optional)</span></p>
+                    </div>
+                    <div class="formsbubblerightside__input">
                         <input>
                         <div class="delete-icon">
                             <img src="/assets/delete.svg">
                         </div>
                     </div>
-                </div>
-                <div class="surveyenddate">
-                    <div class="surveyenddate__text">
-                        <div class="surveyenddate__text--date">
-                            <p>Set end date <span>(optional)</span></p>
-                            <div class="surveyenddate__input">
-                                <input>
-                                <div class="delete-icon">
-                                    <img src="/assets/delete.svg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="surveyenddate__text--category">
-                            <p>Choose category</p>
-                            <span>▼</span>
-                        </div>
+
+                    <div class="formsbubblerightside__button" (click)="addQuestion()">
+                        <p>Add next question</p>
+                        <img src="/assets/add_circle.svg">
                     </div>
                 </div>
-                <app-questions></app-questions>
             </div>
-            <div class="formsbubblerightside">
-                <div class="formsbubblerightside__text">
-                    <p>Describing text <span>(optional)</span></p>
-                </div>
-                <div class="formsbubblerightside__input">
-                    <input>
-                    <div class="delete-icon">
-                        <img src="/assets/delete.svg">
-                    </div>
-                </div>
-
-                <div class="formsbubblerightside__button">
-                    <p>Add next question</p>
-                    <img src="/assets/add_circle.svg">
-                </div>
-            </div>
-
+            <app-questions [questions]="questions"></app-questions>
         </div>
         <div class="publishbutton">
             <p>Publish</p>

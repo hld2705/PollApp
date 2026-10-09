@@ -1,20 +1,20 @@
 @use '../../../../../mixins/main-mixin.scss' as mx;
 
 .questions {
-    width: 100%;
+    width: 70% !important;
     @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: flex-start);
     margin: 0px;
     margin-top: 20px;
 
-    input {
+    input:not([type='checkbox']) {
         @include mx.inputfield();
         margin: 0px;
-        min-width: 112%;
+        min-width: 110% !important;
     }
 
     &__text {
         @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
-        min-width: 120%;
+        width: 111%;
 
         p {
             @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
@@ -40,10 +40,9 @@
     &__text {
         @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
         @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
-        width: 100%;
+        width: auto;
         margin: 0px;
-
-
+        gap: 50px;
 
         &--checkbox {
             @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
@@ -56,12 +55,13 @@
             input {
                 @include mx.checkbox();
                 margin-right: 10px;
-                min-width: auto;
                 cursor: pointer;
+                max-width: 30px !important;
             }
 
             &:hover input {
                 background-color: #FFCFA199;
+                max-width: 30px !important;
             }
         }
     }
@@ -92,9 +92,10 @@
     &__addnewanswer {
         padding-left: 30px;
         cursor: pointer;
-        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+        @include mx.flex-center($align: flex-end, $flex-direction: row, $justify: center);
+        gap: 15px;
 
-        p {
+        &--borderbottom-p {
             @include mx.nokora($size: 16px, $weight: 500);
             color: #ffff;
             font-style: normal;
@@ -109,9 +110,16 @@
         }
 
         &--warningmessage {
-            p {
-                @include mx.mullish($size: 14px, $weight: 400, $color: #FEFDFF);
-            }
+                @include mx.mullish($size: 13px, $weight: 300, $color: #FEFDFF);
+                margin-right: 10px;
+                margin: 0px;
+                cursor: default;
         }
     }
+}
+
+.questions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }

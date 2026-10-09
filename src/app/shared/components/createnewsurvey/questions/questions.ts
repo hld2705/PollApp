@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { QuestionInterface } from '../../../interfaces/questionanswersinterface';
+import { Component,input } from '@angular/core';
+import { QuestionInterface } from '../../../interfaces/interfaces';
 import { numberToLetter } from '../../../pipes/pipes';
 import { FormsModule } from '@angular/forms';
 
@@ -9,22 +9,14 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './questions.html',
   styleUrl: './questions.scss',
 })
+
 export class Questions {
 
-  questions: QuestionInterface[] = [
-    {
-      questionNumber: 1,
-      text: '',
-      multipleAnswers: false,
-      answerNumber: 0,
-      answers: ['', '']
-    }
-  ];
+    questions = input.required<QuestionInterface[]>();
 
-
-  addAnswer(question: QuestionInterface) {
-    if (question.multipleAnswers == true && question.answers.length < 6) {
-      question.answers.push('')
+    addAnswer(question: QuestionInterface) {
+        if (question.multipleAnswers && question.answers.length < 6) {
+            question.answers.push('');
+        }
     }
-  }
 }

@@ -85,10 +85,23 @@
     gap: 64px;
     background-color: #8E709929;
     width: 100%;
-    @include mx.flex-center($align: flex-start, $flex-direction: row, $justify: center);
+    @include mx.flex-center($align: stretch, $flex-direction: column, $justify: flex-start);
 
     &__leftside {
         @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
+    }
+
+    &__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 64px;
+        width: 100%;
+    }
+
+    app-questions {
+        display: block;
+        width: 100%;
     }
 }
 
@@ -154,6 +167,12 @@
             gap: 15px;
             cursor: pointer;
             padding: 5px;
+            position: relative;
+            
+        }
+
+        &--choosencategory{
+            @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770);
         }
 
         &--category:hover {
@@ -287,6 +306,7 @@
     cursor: pointer;
     margin-top: 30px;
     @include mx.flex-center($align: center, $justify: center, $flex-direction: row);
+
     p {
         @include mx.nokora($size: 16px, $weight: 700);
         margin: 0px;
@@ -304,6 +324,36 @@
 
         img {
             width: 20px;
+        }
+    }
+}
+
+.questions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.dropdowncategorymenu {
+    background-color: #FFFF;
+    @include mx.flex-center($align: flex-start, $justify: center, $flex-direction: column);
+    position: absolute;
+    top: 100%;
+    left: 6px;
+    padding-top: 8px;
+    padding-right: 4px;
+    padding-bottom: 8px;
+    padding-left: 4px;
+    border-radius: 6px;
+
+    p {
+        @include mx.mullish($size: 14px, $weight: 400, $color: black);
+        cursor: pointer;
+        padding: 4px;
+        &:hover{
+            background-color: #F4E9FB;
+            border-radius: 6px;
+            
         }
     }
 }

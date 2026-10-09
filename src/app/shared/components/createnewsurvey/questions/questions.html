@@ -1,39 +1,41 @@
-@for (question of questions; track question.questionNumber) {
-<div class="questions">
-    <div class="questions__text">
-        <p>{{ question.questionNumber }}. Question</p>
-        <div class="delete-icon">
-            <img src="/assets/delete.svg">
-        </div>
-    </div>
-    <input>
-
-    <div class="answers">
-        <div class="answers__text">
-            <p>Answers</p>
-            <div class="answers__text--checkbox">
-                <input type="checkbox" [(ngModel)]="question.multipleAnswers">
-                <p>Allow multiple answers.</p>
-            </div>
-        </div>
-        @for(answer of question.answers; track $index) {
-        <div class="answers__input" [class.answers__input--disabled]="!question.multipleAnswers && $index > 0">
-            <p>{{ $index | numberToLetter }}.</p>
-            <input>
+<div class="questions-list">
+    @for (question of questions(); track question.questionNumber) {
+    <div class="questions">
+        <div class="questions__text">
+            <p>{{ question.questionNumber }}. Question</p>
             <div class="delete-icon">
                 <img src="/assets/delete.svg">
             </div>
         </div>
-        }
-        <div class="answers__addnewanswer">
-            <div class="answers__addnewanswer--borderbottom" (click)="addAnswer(question)">
-                <p class="answers__addnewanswer--borderbottom-p">Add answer</p>
-                <img src="/assets/add_circle.svg">
+        <input>
+
+        <div class="answers">
+            <div class="answers__text">
+                <p>Answers</p>
+                <div class="answers__text--checkbox">
+                    <input type="checkbox" [(ngModel)]="question.multipleAnswers">
+                    <p>Allow multiple answers.</p>
+                </div>
             </div>
-            @if(question.answers.length > 2)
-            {<p class="answers__addnewanswer--warningmessage">Up to 6 fields possible</p>
+            @for(answer of question.answers; track $index) {
+            <div class="answers__input" [class.answers__input--disabled]="!question.multipleAnswers && $index > 0">
+                <p>{{ $index | numberToLetter }}.</p>
+                <input>
+                <div class="delete-icon">
+                    <img src="/assets/delete.svg">
+                </div>
+            </div>
             }
+            <div class="answers__addnewanswer">
+                <div class="answers__addnewanswer--borderbottom" (click)="addAnswer(question)">
+                    <p class="answers__addnewanswer--borderbottom-p">Add answer</p>
+                    <img src="/assets/add_circle.svg">
+                </div>
+                @if(question.answers.length > 2)
+                {<p class="answers__addnewanswer--warningmessage">You can add up to 6 answer fields.</p>
+                }
+            </div>
         </div>
     </div>
+    }
 </div>
-}
