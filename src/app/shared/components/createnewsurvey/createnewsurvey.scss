@@ -82,7 +82,6 @@
 .formsbubble {
     border-radius: 5px 80px 5px 5px;
     padding: 40px 20px;
-    gap: 64px;
     background-color: #8E709929;
     width: 100%;
     @include mx.flex-center($align: stretch, $flex-direction: column, $justify: flex-start);
@@ -163,17 +162,24 @@
         min-width: 122%;
 
         &--category {
-            @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
-            gap: 15px;
+            @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
+            gap: 8px;
             cursor: pointer;
             padding: 5px;
             position: relative;
-            
+            @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770);
         }
 
         &--choosencategory{
-            @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770);
+            @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770); 
+            margin: 0px;
         }
+
+        &--arrow {
+            @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+            gap: 15px;
+        }
+
 
         &--category:hover {
             background-color: #55475a;
@@ -190,7 +196,6 @@
         span {
             margin: 0px;
         }
-
 
 
         &--date {
@@ -213,38 +218,9 @@
     }
 }
 
-.questions {
-    width: 100%;
-    @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: flex-start);
-    margin: 0px;
-    margin-top: 20px;
-
-    input {
-        @include mx.inputfield();
-        margin: 0px;
-        min-width: 112%;
-    }
-
-    &__text {
-        @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
-        min-width: 120%;
-        margin: 0px;
-
-        p {
-            @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
-            margin: 0px;
-        }
-
-        .delete-icon {
-            @include mx.deleteicon();
-        }
-    }
-}
-
 .formsbubblerightside {
     margin-left: 70px;
     @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: flex-start);
-
 
 
     p {
@@ -257,12 +233,13 @@
     }
 
     &__input {
-        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+        @include mx.flex-center($align: flex-start, $flex-direction: row, $justify: center);
         gap: 10px;
 
         input {
             @include mx.inputfield();
-            padding-right: 13px;
+            padding-bottom: 80px;
+            padding-right: 45px;
             padding-left: 13px;
             gap: 10px;
         }
@@ -328,12 +305,6 @@
     }
 }
 
-.questions-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-}
-
 .dropdowncategorymenu {
     background-color: #FFFF;
     @include mx.flex-center($align: flex-start, $justify: center, $flex-direction: column);
@@ -350,10 +321,11 @@
         @include mx.mullish($size: 14px, $weight: 400, $color: black);
         cursor: pointer;
         padding: 4px;
-        &:hover{
+
+        &:hover {
             background-color: #F4E9FB;
             border-radius: 6px;
-            
+
         }
     }
 }

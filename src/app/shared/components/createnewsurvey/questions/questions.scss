@@ -1,7 +1,7 @@
 @use '../../../../../mixins/main-mixin.scss' as mx;
 
 .questions {
-    width: 70% !important;
+    width: 100%;
     @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: flex-start);
     margin: 0px;
     margin-top: 20px;
@@ -9,12 +9,14 @@
     input:not([type='checkbox']) {
         @include mx.inputfield();
         margin: 0px;
-        min-width: 110% !important;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
     }
 
     &__text {
         @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
-        width: 111%;
+        width: 100%;
 
         p {
             @include mx.mullish($size: 18px, $weight: 700, $color: #FEFDFF);
@@ -119,7 +121,26 @@
 }
 
 .questions-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+    width: 70%;
 }
+
+.questions-list__items {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.questions-list__items > .questions {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.answers [formArrayName="answers"] {
+    display: grid;
+    gap: 10px;
+}
+
+

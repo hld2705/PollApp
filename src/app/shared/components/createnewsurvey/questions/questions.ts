@@ -1,22 +1,25 @@
-import { Component,input } from '@angular/core';
-import { QuestionInterface } from '../../../interfaces/interfaces';
+
+import { Component, input } from '@angular/core';
+import { ReactiveFormsModule, FormArray } from '@angular/forms';
 import { numberToLetter } from '../../../pipes/pipes';
-import { FormsModule } from '@angular/forms';
+import { createSurveyForm, createAnswerForm, createQuestionForm, } from '../../../forms/forms';
 
 @Component({
-  selector: 'app-questions',
-  imports: [numberToLetter, FormsModule],
-  templateUrl: './questions.html',
-  styleUrl: './questions.scss',
+    selector: 'app-questions',
+    imports: [numberToLetter, ReactiveFormsModule],
+    templateUrl: './questions.html',
+    styleUrl: './questions.scss',
 })
-
 export class Questions {
+    surveyForm = input.required<ReturnType<typeof createSurveyForm>>();
 
-    questions = input.required<QuestionInterface[]>();
+    addQuestion() {
+        this.surveyForm().controls.questions.push(createQuestionForm());
+    }
 
-    addAnswer(question: QuestionInterface) {
-        if (question.multipleAnswers && question.answers.length < 6) {
-            question.answers.push('');
+    addAnswer(answers: FormArray) {
+        if (answers.length < 6) {
+            answers.push(createAnswerForm());
         }
     }
 }
