@@ -108,6 +108,7 @@
     @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
     width: 100%;
     margin-bottom: 10px;
+    position: relative;
 
     &__text {
         @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
@@ -170,8 +171,8 @@
             @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770);
         }
 
-        &--choosencategory{
-            @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770); 
+        &--choosencategory {
+            @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770);
             margin: 0px;
         }
 
@@ -205,11 +206,12 @@
     }
 
     &__input {
-        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: flex-start);
         gap: 5px;
 
         input {
             @include mx.inputfield();
+            cursor: pointer;
         }
 
         .delete-icon {
@@ -328,4 +330,12 @@
 
         }
     }
+}
+
+.validation-error {
+    @include mx.mullish($size: 12px, $weight: 400, $color: #e53935);
+    margin: 0px;
+    position: absolute;
+    top: 56px;
+    
 }

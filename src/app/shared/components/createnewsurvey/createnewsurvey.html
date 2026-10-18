@@ -23,6 +23,17 @@
                             </div>
                             <div class="surveynameform__input">
                                 <input formControlName="survey_name">
+                                @if (submitted && survey.controls.survey_name.invalid) {
+                                <p class="validation-error">
+                                    @if (survey.controls.survey_name.hasError('required')) {
+                                    Survey name is required.
+                                    } @else if (survey.controls.survey_name.hasError('minlength')) {
+                                    Minimum 3 characters required.
+                                    } @else if (survey.controls.survey_name.hasError('whitespace')) {
+                                    Please enter a name, not only spaces.
+                                    }
+                                </p>
+                                }
                                 <div class="delete-icon">
                                     <img src="/assets/delete.svg">
                                 </div>
@@ -33,7 +44,7 @@
                                 <div class="surveyenddate__text--date">
                                     <p>Set end date <span>(optional)</span></p>
                                     <div class="surveyenddate__input">
-                                        <input formControlName="end_date">
+                                        <input formControlName="end_date" type="date">
                                         <div class="delete-icon">
                                             <img src="/assets/delete.svg">
                                         </div>
@@ -82,7 +93,7 @@
                 <app-questions [surveyForm]="survey"></app-questions>
             </div>
         </form>
-        <div class="publishbutton">
+        <div class="publishbutton" (click)="publishSurvey()">
             <p>Publish</p>
             <img src="/assets/check.svg">
         </div>

@@ -1,6 +1,8 @@
-import {FormArray,FormControl,FormGroup,Validators,
-} from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
+/**
+ * Form for validating questions
+ */
 export function createQuestionForm() {
   return new FormGroup({
     question: new FormControl('', {
@@ -15,18 +17,24 @@ export function createQuestionForm() {
   });
 }
 
+/**
+ * Form for validating answers
+ */
 export function createAnswerForm() {
   return new FormControl('', {
     nonNullable: true,
-    validators: [Validators.required, Validators.minLength(1)],
+    validators: [Validators.minLength(1), noWhiteSpaceValidator, Validators.pattern(/.*\p{L}.*/u)],
   });
 }
 
+/**
+ * Form for validating survey
+ */
 export function createSurveyForm() {
   return new FormGroup({
     survey_name: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required, Validators.minLength(3)],
+      validators: [Validators.required, Validators.minLength(3), noWhiteSpaceValidator, Validators.pattern(/.*\p{L}.*/u)],
     }),
     description: new FormControl('', { nonNullable: true }),
     category: new FormControl('', { nonNullable: true }),
@@ -34,4 +42,12 @@ export function createSurveyForm() {
     questions: new FormArray([createQuestionForm()]),
   });
 }
+
+/**
+ * Custom validator for whitespaces
+ */
+export function noWhiteSpaceValidator(control: AbstractControl) {
+  return control.value?.trim() ? null : { whitespace: true };
+}
+
 

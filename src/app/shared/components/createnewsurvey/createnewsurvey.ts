@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Questions } from './questions/questions';
-//import { QuestionInterface } from '../../interfaces/interfaces';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { createSurveyForm,createQuestionForm } from '../../forms/forms';
+import { createSurveyForm, createQuestionForm } from '../../forms/forms';
+import { pushToSupabase } from '../../services/survey.service';
 
 @Component({
   selector: 'app-createnewsurvey',
@@ -12,6 +12,8 @@ import { createSurveyForm,createQuestionForm } from '../../forms/forms';
   styleUrl: './createnewsurvey.scss',
 })
 export class Createnewsurvey {
+
+  submitted = false;
 
   survey = createSurveyForm();
 
@@ -24,16 +26,6 @@ export class Createnewsurvey {
     'Lifestyle & Preferences',
     'Technology & Innovation'
   ];
-/*
-  questions: QuestionInterface[] = [
-    {
-      questionNumber: 1,
-      text: '',
-      multipleAnswers: false,
-      answerNumber: 0,
-      answers: ['', '']
-    }
-  ];*/
 
   addQuestion() {
     this.survey.controls.questions.push(createQuestionForm());
@@ -52,6 +44,16 @@ export class Createnewsurvey {
     this.menuOpen = !this.menuOpen;
   }
 
+  publishSurvey() {
+    const surveyData = this.survey.getRawValue();
+    this.submitted = true;
+    this.survey.markAllAsTouched();
 
+    if (this.survey.invalid) {
+      return
+    } else {
+      pushToSupabase(surveyData)
+    }
+  }
 
 }
