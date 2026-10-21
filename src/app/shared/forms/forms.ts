@@ -7,7 +7,7 @@ export function createQuestionForm() {
   return new FormGroup({
     question: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required, Validators.minLength(3)],
+      validators: [],
     }),
     multipleAnswers: new FormControl(false, { nonNullable: true }),
     answers: new FormArray([
@@ -23,7 +23,7 @@ export function createQuestionForm() {
 export function createAnswerForm() {
   return new FormControl('', {
     nonNullable: true,
-    validators: [Validators.minLength(1), noWhiteSpaceValidator, Validators.pattern(/.*\p{L}.*/u)],
+    validators: [Validators.pattern(/.*\p{L}.*/u)],
   });
 }
 

@@ -35,10 +35,11 @@ export class Createnewsurvey {
   category = '';
 
   chooseCategory(category: string) {
-    this.category = category === 'All Surveys' ? '' : category;
-    this.survey.controls.category.setValue(this.category);
-    this.menuOpen = false;
-  }
+  this.category = category === 'All Surveys' ? '' : category;
+  this.survey.controls.category.setValue(this.category);
+  this.menuOpen = false;
+
+}
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
