@@ -34,7 +34,7 @@
                                     }
                                 </p>
                                 }
-                                <div class="delete-icon">
+                                <div class="delete-icon" (click)="deleteInput(survey.controls.survey_name)">
                                     <img src="/assets/delete.svg">
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <p>Set end date <span>(optional)</span></p>
                                     <div class="surveyenddate__input">
                                         <input formControlName="end_date" type="date">
-                                        <div class="delete-icon">
+                                        <div class="delete-icon" (click)="deleteInput(survey.controls.end_date)">
                                             <img src="/assets/delete.svg">
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="formsbubblerightside__input">
                             <input formControlName="description">
-                            <div class="delete-icon">
+                            <div class="delete-icon" (click)="deleteInput(survey.controls.description)">
                                 <img src="/assets/delete.svg">
                             </div>
                         </div>

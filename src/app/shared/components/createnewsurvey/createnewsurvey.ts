@@ -4,6 +4,7 @@ import { Questions } from './questions/questions';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createSurveyForm, createQuestionForm } from '../../forms/forms';
 import { pushToSupabase } from '../../services/survey.service';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-createnewsurvey',
@@ -35,11 +36,11 @@ export class Createnewsurvey {
   category = '';
 
   chooseCategory(category: string) {
-  this.category = category === 'All Surveys' ? '' : category;
-  this.survey.controls.category.setValue(this.category);
-  this.menuOpen = false;
+    this.category = category === 'All Surveys' ? '' : category;
+    this.survey.controls.category.setValue(this.category);
+    this.menuOpen = false;
 
-}
+  }
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -57,4 +58,7 @@ export class Createnewsurvey {
     }
   }
 
+  deleteInput(input: AbstractControl) {
+    input.setValue('');
+  }
 }

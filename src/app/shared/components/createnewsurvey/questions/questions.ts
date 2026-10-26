@@ -3,6 +3,7 @@ import { Component, input } from '@angular/core';
 import { ReactiveFormsModule, FormArray } from '@angular/forms';
 import { numberToLetter } from '../../../pipes/pipes';
 import { createSurveyForm, createAnswerForm, createQuestionForm, } from '../../../forms/forms';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
     selector: 'app-questions',
@@ -11,6 +12,10 @@ import { createSurveyForm, createAnswerForm, createQuestionForm, } from '../../.
     styleUrl: './questions.scss',
 })
 export class Questions {
+    deleteInput(input: AbstractControl) {
+        input.setValue('');
+    }
+
     surveyForm = input.required<ReturnType<typeof createSurveyForm>>();
 
     addQuestion() {

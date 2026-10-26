@@ -16,7 +16,29 @@ export async function pushToSupabase(surveyData: any) {
                 category_name: surveyData.category_name
             }
         ]).select()
-    console.log('Supabase data:', data);
+    pushQuestionsToSupabase(surveyData)
+    /*console.log('Supabase data:', data);
     console.log('Supabase error:', error);
-    console.log('Supabase id:', category);
+    console.log('Supabase id:', category);*/
+
+}
+
+export async function pushQuestionsToSupabase(surveyData: any) {
+    surveyData == await supabase
+        .from('Questions')
+        .insert([
+            {
+                text: surveyData.question,
+                multiple_answers: surveyData.multiple_answers,
+                survey_id: surveyData.survey_id
+            }
+        ])
+        /*const(data) = await supabase
+        .from('Answers')
+        .insert([
+            {
+                question_id: questionId,
+                text:
+            }
+        ])*/
 }

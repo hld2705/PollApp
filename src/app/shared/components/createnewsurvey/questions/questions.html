@@ -4,7 +4,7 @@
             <div class="questions" [formGroupName]="questionIndex">
                 <div class="questions__text">
                     <p>{{ questionIndex + 1 }}. Question</p>
-                    <div class="delete-icon">
+                    <div class="delete-icon" (click)="deleteInput(question.controls.question)">
                         <img src="/assets/delete.svg">
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                             [class.answers__input--disabled]="!question.controls.multipleAnswers.value && answerIndex > 0">
                             <p>{{ answerIndex | numberToLetter }}.</p>
                             <input [formControlName]="answerIndex">
-                            <div class="delete-icon">
+                            <div class="delete-icon" (click)="deleteInput(answer)">
                                 <img src="/assets/delete.svg">
                             </div>
                         </div>
