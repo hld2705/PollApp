@@ -1,7 +1,7 @@
 export interface QuestionInterface {
   questionNumber: number;
   text: string;
-  multipleAnswers: boolean;
+  multiple_answers: boolean;
   answerNumber:number;
   answers: string[];
 }

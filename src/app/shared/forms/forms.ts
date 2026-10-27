@@ -9,7 +9,7 @@ export function createQuestionForm() {
       nonNullable: true,
       validators: [],
     }),
-    multipleAnswers: new FormControl(false, { nonNullable: true }),
+    multiple_answers: new FormControl(false, { nonNullable: true }),
     answers: new FormArray([
       createAnswerForm(),
       createAnswerForm(),

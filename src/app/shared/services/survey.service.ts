@@ -15,30 +15,35 @@ export async function pushToSupabase(surveyData: any) {
                 category_id: surveyData.category_id,
                 category_name: surveyData.category_name
             }
-        ]).select()
-    pushQuestionsToSupabase(surveyData)
-    /*console.log('Supabase data:', data);
-    console.log('Supabase error:', error);
+        ]).select('id')
+    const surveyId: number = data![0].id;
+    await pushQuestionsToSupabase(surveyData, surveyId)
+    //console.log('Supabase data:', data);
+    /*console.log('Supabase error:', error);
     console.log('Supabase id:', category);*/
 
 }
 
-export async function pushQuestionsToSupabase(surveyData: any) {
+export async function pushQuestionsToSupabase(surveyData: any, surveyId: number) {
     surveyData == await supabase
         .from('Questions')
         .insert([
             {
-                text: surveyData.question,
-                multiple_answers: surveyData.multiple_answers,
-                survey_id: surveyData.survey_id
+                text: surveyData.questions[0].question,
+                multiple_answers: surveyData.questions[0].multiple_answers,
+                survey_id: surveyId
             }
-        ])
-        /*const(data) = await supabase
+        ]).select('id')
+
+    console.log('Question and surveyid:', surveyId)
+    /*const questionId: number = data![0].id;
+
+    const { data } = await supabase
         .from('Answers')
         .insert([
             {
                 question_id: questionId,
-                text:
+                text: surveyData.answers[0].answer
             }
         ])*/
 }

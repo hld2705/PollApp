@@ -18,6 +18,8 @@ export class Createnewsurvey {
 
   survey = createSurveyForm();
 
+  question = createQuestionForm();
+
   categories: string[] = [
     'All Surveys',
     'Team Activities',

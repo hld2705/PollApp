@@ -15,7 +15,7 @@
                         <p>Answers</p>
 
                         <div class="answers__text--checkbox">
-                            <input type="checkbox" formControlName="multipleAnswers">
+                            <input type="checkbox" formControlName="multiple_answers">
                             <p>Allow multiple answers.</p>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         @for (answer of question.controls.answers.controls;track $index;let answerIndex = $index
                         ) {
                         <div class="answers__input"
-                            [class.answers__input--disabled]="!question.controls.multipleAnswers.value && answerIndex > 0">
+                            [class.answers__input--disabled]="!question.controls.multiple_answers.value && answerIndex > 0">
                             <p>{{ answerIndex | numberToLetter }}.</p>
                             <input [formControlName]="answerIndex">
                             <div class="delete-icon" (click)="deleteInput(answer)">
