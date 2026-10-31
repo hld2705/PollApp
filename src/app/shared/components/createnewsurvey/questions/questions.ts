@@ -22,9 +22,9 @@ export class Questions {
         this.surveyForm().controls.questions.push(createQuestionForm());
     }
 
-    addAnswer(answers: FormArray) {
-        if (answers.length < 6) {
-            answers.push(createAnswerForm());
-        }
-    }
+    addAnswer(questionIndex: number) {
+    this.surveyForm().controls.questions
+        .at(questionIndex)
+        .controls.answers.push(createAnswerForm());
+}
 }

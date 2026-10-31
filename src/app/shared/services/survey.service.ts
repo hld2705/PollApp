@@ -1,5 +1,8 @@
 import { supabase } from "./supabase";
 
+/**
+ * Takes all the gathered data from angular forms, forwards id to pushQuestionsToSupabase and pushes all of the gathered data to supabase
+ */
 export async function pushToSupabase(surveyData: any) {
     let { data: category } = await supabase
         .from('Categories')
@@ -18,32 +21,30 @@ export async function pushToSupabase(surveyData: any) {
         ]).select('id')
     const surveyId: number = data![0].id;
     await pushQuestionsToSupabase(surveyData, surveyId)
-    //console.log('Supabase data:', data);
-    /*console.log('Supabase error:', error);
-    console.log('Supabase id:', category);*/
-
 }
 
+/**
+ * Takes id from the column questions, forwards it to answers and pushes it to supabase
+ */
 export async function pushQuestionsToSupabase(surveyData: any, surveyId: number) {
-    surveyData == await supabase
+    const { data, error } = await supabase
         .from('Questions')
         .insert([
             {
                 text: surveyData.questions[0].question,
                 multiple_answers: surveyData.questions[0].multiple_answers,
                 survey_id: surveyId
-            }
-        ]).select('id')
-
-    console.log('Question and surveyid:', surveyId)
-    /*const questionId: number = data![0].id;
-
-    const { data } = await supabase
-        .from('Answers')
-        .insert([
-            {
-                question_id: questionId,
-                text: surveyData.answers[0].answer
-            }
-        ])*/
+            }]).select('id');
+    if (error) throw error;
+    const questionId = data[0].id;
+    for (const answer of surveyData.questions[0].answers) {
+        await supabase
+            .from('Answers')
+            .insert([
+                {
+                    question_id: questionId,
+                    text: answer
+                }
+            ]);
+    }
 }

@@ -30,6 +30,9 @@ export class Createnewsurvey {
     'Technology & Innovation'
   ];
 
+  /**
+   * Pushes the values to the question form
+   */
   addQuestion() {
     this.survey.controls.questions.push(createQuestionForm());
   }
@@ -37,6 +40,9 @@ export class Createnewsurvey {
   menuOpen = false;
   category = '';
 
+  /**
+   * sets the category and updates if the user chooses 'All Surveys' the value is set to 'none'
+   */
   chooseCategory(category: string) {
     this.category = category === 'All Surveys' ? '' : category;
     this.survey.controls.category.setValue(this.category);
@@ -44,10 +50,16 @@ export class Createnewsurvey {
 
   }
 
+  /**
+   * Small function for the category menu
+   */
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
+  /**
+   * Gets 'raw value' from survey forms, checks if the survey is valid, and pushes it to the next function that actually pushes the same values to supabase
+   */
   publishSurvey() {
     const surveyData = this.survey.getRawValue();
     this.submitted = true;
