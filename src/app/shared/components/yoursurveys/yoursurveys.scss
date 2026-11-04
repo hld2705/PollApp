@@ -1,0 +1,51 @@
+@use '../../../../mixins/main-mixin.scss' as mx;
+
+.yoursurveys {
+    @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+
+    h1 {
+        @include mx.nerko-one($family: 'Nerko One', $weight: 400, $size: 72px);
+        color: #FFB770;
+    }
+
+    &__endingsoon {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
+        gap: 20px;
+        width: 100%;
+    }
+
+    &__bubbles {
+        @include mx.flex-center($align: flex-start, $flex-direction: column, $justify: center);
+        border-top-right-radius: 80px;
+        padding-top: 40px;
+        padding-right: 18px;
+        padding-bottom: 40px;
+        padding-left: 18px;
+        gap: 10px;
+        background-color: #FAF5FE;
+    }
+
+    &__category_name {
+        @include mx.mullish($size: 14px, $weight: 600, $color: 'black');
+        margin: 0px;
+    }
+
+    &__title {
+        @include mx.mullish($size: 26px, $weight: 700, $color: 'black');
+        margin: 0px;
+    }
+
+    &__endsinbubble {
+        border-top-right-radius: 14px;
+        padding-top: 3px;
+        padding-right: 6px;
+        padding-bottom: 3px;
+        padding-left: 6px;
+        gap: 10px;
+        background-color: #FFCFA1;
+
+        p {
+            @include mx.mullish($size: 14px, $weight: 500, $color: 'black');
+        }
+    }
+}

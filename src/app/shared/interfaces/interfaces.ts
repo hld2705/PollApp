@@ -6,6 +6,16 @@ export interface QuestionInterface {
   answers: string[];
 }
 
-export interface Category{
+export interface Category {
   category: string[];
+}
+
+export interface Survey {
+  id: number;
+  title: string;
+  description: string;
+  category_id: number | null;
+  category_name: string;
+  end_date: string;
+  created_at: string;
 }

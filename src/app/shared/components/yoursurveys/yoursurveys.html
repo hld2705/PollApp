@@ -1,1 +1,19 @@
-<p>yoursurveys works!</p>
+<div class="yoursurveys">
+    <h1>Your surveys</h1>
+
+    <div class="yoursurveys__endingsoon">
+
+        @for(survey of survey; track survey){
+        <div class="yoursurveys__bubbles">
+            <p class="yoursurveys__category_name">{{survey.category_name}}</p>
+            <p class="yoursurveys__title">{{survey.title}}</p>
+
+            <div class="yoursurveys__endsinbubble">
+             <p>Ends in:</p>  <p>{{survey.end_date | endDatePipe}}</p>
+            </div>
+        </div>}
+
+    </div>
+
+
+</div>
