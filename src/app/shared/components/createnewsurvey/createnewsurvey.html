@@ -9,7 +9,7 @@
             <p>Create new survey</p>
             <div class="cancelbutton">
                 <p>Cancel</p>
-                <img src="/assets/close.svg">
+                <img src="./assets/close.svg">
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                                 </p>
                                 }
                                 <div class="delete-icon" (click)="deleteInput(survey.controls.survey_name)">
-                                    <img src="/assets/delete.svg">
+                                    <img src="./assets/delete.svg">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                     <div class="surveyenddate__input">
                                         <input formControlName="end_date" type="date">
                                         <div class="delete-icon" (click)="deleteInput(survey.controls.end_date)">
-                                            <img src="/assets/delete.svg">
+                                            <img src="./assets/delete.svg">
                                         </div>
                                     </div>
                                 </div>
@@ -80,13 +80,13 @@
                         <div class="formsbubblerightside__input">
                             <input formControlName="description">
                             <div class="delete-icon" (click)="deleteInput(survey.controls.description)">
-                                <img src="/assets/delete.svg">
+                                <img src="./assets/delete.svg">
                             </div>
                         </div>
 
                         <div class="formsbubblerightside__button" (click)="addQuestion()">
                             <p>Add next question</p>
-                            <img src="/assets/add_circle.svg">
+                            <img src="./assets/add_circle.svg">
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
         </form>
         <div class="publishbutton" (click)="publishSurvey()">
             <p>Publish</p>
-            <img src="/assets/check.svg">
+            <img src="./assets/check.svg">
         </div>
         
     </div>

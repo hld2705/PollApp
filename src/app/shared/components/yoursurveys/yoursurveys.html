@@ -3,17 +3,54 @@
 
     <div class="yoursurveys__endingsoon">
 
-        @for(survey of survey; track survey){
+        @for (survey of surveys(); track survey.id){
         <div class="yoursurveys__bubbles">
             <p class="yoursurveys__category_name">{{survey.category_name}}</p>
             <p class="yoursurveys__title">{{survey.title}}</p>
 
             <div class="yoursurveys__endsinbubble">
-             <p>Ends in:</p>  <p>{{survey.end_date | endDatePipe}}</p>
+                <p>Ends in:</p>
+                @let dayValue = survey.end_date | endDatePipe;
+                <p>{{ dayValue }}</p>
+                @if (dayValue === 1) {
+                <p>Day</p>
+                } @else {
+                <p>Days</p>
+                }
             </div>
         </div>}
 
     </div>
 
+    <div class="surveyfilter">
+        <div class="surveyfilter__positioning">
+            <div class="surveyfilter__active">
+                <p>Active survey</p>
+            </div>
+            <div class="surveyfilter__past">
+                <p>Past survey</p>
+            </div>
+        </div>
+        <div class="surveyfilter__categories">
+            <div class="surveyenddate__text--category" (click)="toggleMenu()">
+                <div class="surveyenddate__text--arrow">
+                    <p>Choose category</p>
+                    @if(menuOpen){
+                    <span>▲</span>
+                    }@else{
+                    <span>▼</span>
+                    }
+                </div>
+                @if(menuOpen){
+                <div class="dropdowncategorymenu">
+                    @for (category of categories; track $index){
+                    <p>
+                        {{category}}
+                    </p>}
+                </div>}
+
+            </div>
+        </div>
+    </div>
 
 </div>
