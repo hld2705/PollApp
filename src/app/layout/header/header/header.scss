@@ -86,14 +86,16 @@
         @include mx.nokora();
         border: 0px;
         transition: ease-in-out 0.3s;
+
         img {
             width: 0px;
             transition: ease-in-out 0.3s;
         }
 
-        &:hover{
+        &:hover {
             background-color: #FFB770;
-            img{
+
+            img {
                 width: 20px;
             }
         }

@@ -1,25 +1,25 @@
 <div class="yoursurveys">
     <h1>Your surveys</h1>
-
+    <h2>Ending soon surveys</h2>
     <div class="yoursurveys__endingsoon">
 
         @for (survey of surveys(); track survey.id){
-        <div class="yoursurveys__bubbles">
-            <p class="yoursurveys__category_name">{{survey.category_name}}</p>
-            <p class="yoursurveys__title">{{survey.title}}</p>
+        @let dayValue = survey.end_date | endDatePipe;
+        @if( dayValue <= 0 || dayValue === 0 || dayValue >= 5){}
+            @else{ <div class="yoursurveys__bubbles">
+                <p class="yoursurveys__category_name">{{survey.category_name}}</p>
+                <p class="yoursurveys__title">{{survey.title}}</p>
 
-            <div class="yoursurveys__endsinbubble">
-                <p>Ends in:</p>
-                @let dayValue = survey.end_date | endDatePipe;
-                <p>{{ dayValue }}</p>
-                @if (dayValue === 1) {
-                <p>Day</p>
-                } @else {
-                <p>Days</p>
-                }
-            </div>
-        </div>}
-
+                <div class="yoursurveys__endsinbubble">
+                    <p>Ends in:</p>
+                    <p>{{ dayValue }}</p>
+                    @if (dayValue === 1) {
+                    <p>Day</p>
+                    } @else {
+                    <p>Days</p>
+                    }
+                </div>
+            </div>}}
     </div>
 
     <div class="surveyfilter">
@@ -44,13 +44,31 @@
                 @if(menuOpen){
                 <div class="dropdowncategorymenu">
                     @for (category of categories; track $index){
-                    <p>
+                    <p (click)="selectCategory(category)">
                         {{category}}
                     </p>}
                 </div>}
-
+                <p class="dropdowncategorymenu__selectedcategory">{{selectedCategory}}</p>
             </div>
         </div>
+    </div>
+
+    <div class="allsurveys">
+        @for (survey of surveys(); track survey.id){
+        <div class="allsurveys__bubble">
+            <p class="allsurveys__category_name">{{survey.category_name}}</p>
+            <p class="allsurveys__title">{{survey.title}}</p>
+            <div class="yoursurveys__endsinbubble">
+                <p>Ends in:</p>
+                @let dayValue = survey.end_date | endDatePipe;
+                <p>{{ dayValue }}</p>
+                @if (dayValue === 1) {
+                <p>Day</p>
+                } @else {
+                <p>Days</p>
+                }
+            </div>
+        </div>}
     </div>
 
 </div>

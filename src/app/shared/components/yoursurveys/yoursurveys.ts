@@ -42,5 +42,14 @@ export class Yoursurveys implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
+  selectedCategory = '';
+
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+    if (this.selectedCategory == 'All Surveys') {
+      return this.selectedCategory = '';
+    } else { return this.selectedCategory; }
+
+  }
 
 }

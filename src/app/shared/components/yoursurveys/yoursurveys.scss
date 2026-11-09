@@ -3,21 +3,48 @@
 
 :host {
     background-color: #35263a;
+    display: block;
 }
 
 
 .yoursurveys {
     @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+    margin: 0px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 50px;
 
     h1 {
         @include mx.nerko-one($family: 'Nerko One', $weight: 400, $size: 72px);
         color: #FFB770;
     }
 
+    h2 {
+        @include mx.mullish($size: 32px, $weight: 600, $color: #FFFF);
+        align-self: flex-start;
+    }
+
     &__endingsoon {
-        @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
-        gap: 20px;
+        @include mx.flex-center($align: stretch, $flex-direction: row, $justify: flex-start);
         width: 100%;
+        gap: 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 15px;
+
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #232e33;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #ffb770;
+            border-radius: 10px;
+        }
     }
 
     &__bubbles {
@@ -29,6 +56,12 @@
         padding-left: 18px;
         gap: 10px;
         background-color: #FAF5FE;
+        cursor: pointer;
+        width: 50%;
+    }
+
+    &__bubbles:hover {
+        background-color: #F4E9FB;
     }
 
     &__category_name {
@@ -54,8 +87,8 @@
 
         p {
             @include mx.mullish($size: 14px, $weight: 500, $color: 'black');
-             white-space: nowrap;
-             margin: 0px;
+            white-space: nowrap;
+            margin: 0px;
         }
     }
 }
@@ -70,7 +103,6 @@
     &__positioning {
         @include mx.flex-center($align: center, $flex-direction: row, $justify: center);
         gap: 25px;
-        margin-left: 25px;
     }
 
     &__active {
@@ -88,6 +120,11 @@
             color: black;
             margin: 0px;
         }
+
+    }
+
+    &__active:hover {
+        background-color: #FFCFA1;
     }
 
     &__past {
@@ -105,5 +142,122 @@
             color: black;
             margin: 0px;
         }
+    }
+
+    &__past:hover {
+        background-color: #FFCFA1;
+    }
+}
+
+.surveyenddate__text--arrow {
+    @include mx.mullish($size: 18px, $weight: 700);
+
+    p {
+        margin: 0px;
+        color: white;
+    }
+}
+
+.surveyenddate__text--category {
+    padding: 0px;
+}
+
+.dropdowncategorymenu {
+    p {
+        margin: 0px;
+    }
+
+    &__selectedcategory {
+        @include mx.mullish($size: 14px, $weight: 400, $color: #FFB770);
+        margin: 0px;
+        margin-top: 10px;
+    }
+}
+
+.allsurveys {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-auto-rows: auto;
+    gap: 20px;
+
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    margin-top: 50px;
+    width: 100%;
+    padding: 0px 10px 20px 0px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #ffb770 #232e33;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #232e33;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ffb770;
+        border-radius: 10px;
+    }
+
+    &__bubble {
+        @include mx.flex-center($align: flex-start, $flex-direction: column);
+        gap: 15px;
+        border-radius: 5px 50px 5px 5px;
+        padding: 12px 20px;
+        background-color: #D9D9D914;
+        cursor: pointer;
+    }
+
+    &__bubble:hover {
+        background-color: #4f4454;
+    }
+
+    &__category_name {
+        align-self: flex-start;
+        @include mx.mullish($size: 14px, $weight: 500, $color: #FFB770);
+    }
+
+    &__title {
+        align-self: flex-start;
+        @include mx.mullish($size: 24px, $weight: 700, $color: #FFFF);
+        margin: 0px;
+    }
+
+    .yoursurveys__endsinbubble {
+        align-self: flex-end;
+    }
+}
+
+
+body {
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #ffb770;
+    --sb-size: 8px;
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 10px;
+
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
     }
 }
