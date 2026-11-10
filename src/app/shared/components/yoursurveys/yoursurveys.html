@@ -6,28 +6,32 @@
         @for (survey of surveys(); track survey.id){
         @let dayValue = survey.end_date | endDatePipe;
         @if( dayValue <= 0 || dayValue === 0 || dayValue >= 5){}
-            @else{ <div class="yoursurveys__bubbles">
+            @else{ <div class="yoursurveys__bubbles" [routerLink]="['/survey-details']" >
                 <p class="yoursurveys__category_name">{{survey.category_name}}</p>
                 <p class="yoursurveys__title">{{survey.title}}</p>
 
                 <div class="yoursurveys__endsinbubble">
-                    <p>Ends in:</p>
-                    <p>{{ dayValue }}</p>
-                    @if (dayValue === 1) {
-                    <p>Day</p>
-                    } @else {
-                    <p>Days</p>
-                    }
+                    @let dayValue = survey.end_date | endDatePipe;
+                    @if(dayValue === 0 || dayValue <= 0){
+                    <p>Ended</p>
+                        }@else{
+                        <p>Ends in:</p>
+                        <p>{{ dayValue }}</p>
+                        @if (dayValue === 1) {
+                        <p>Day</p>
+                        } @else {
+                        <p>Days</p>
+                        }}
                 </div>
             </div>}}
     </div>
 
     <div class="surveyfilter">
         <div class="surveyfilter__positioning">
-            <div class="surveyfilter__active">
+            <div class="surveyfilter__active" (click)="selectStatus('active')">
                 <p>Active survey</p>
             </div>
-            <div class="surveyfilter__past">
+            <div class="surveyfilter__past" (click)="selectStatus('past')">
                 <p>Past survey</p>
             </div>
         </div>
@@ -54,19 +58,22 @@
     </div>
 
     <div class="allsurveys">
-        @for (survey of surveys(); track survey.id){
-        <div class="allsurveys__bubble">
+        @for (survey of filteredSurveys(); track survey.id){
+        <div class="allsurveys__bubble" [routerLink]="['/survey-details']" >
             <p class="allsurveys__category_name">{{survey.category_name}}</p>
             <p class="allsurveys__title">{{survey.title}}</p>
             <div class="yoursurveys__endsinbubble">
-                <p>Ends in:</p>
                 @let dayValue = survey.end_date | endDatePipe;
-                <p>{{ dayValue }}</p>
-                @if (dayValue === 1) {
-                <p>Day</p>
-                } @else {
-                <p>Days</p>
-                }
+                @if(dayValue === 0 || dayValue <= 0){
+                <p>Ended</p>
+                }@else{
+                    <p>Ends in:</p>
+                    <p>{{ dayValue }}</p>
+                    @if (dayValue === 1) {
+                    <p>Day</p>
+                    } @else {
+                    <p>Days</p>
+                    }}
             </div>
         </div>}
     </div>
