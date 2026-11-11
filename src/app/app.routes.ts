@@ -6,5 +6,5 @@ import { Surveydetails } from './shared/components/surveydetails/surveydetails';
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'new-survey', component: Createnewsurvey },
-  { path: 'survey-details', component: Surveydetails },
+  { path: 'survey-details/:id', component: Surveydetails },
 ];

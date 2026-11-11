@@ -1,5 +1,7 @@
 import { Survey } from "../interfaces/interfaces";
 import { supabase } from "./supabase";
+import { Question } from "../interfaces/interfaces";
+import { Answer } from '../interfaces/interfaces';
 
 /**
  * Takes all the gathered data from angular forms, forwards id to pushQuestionsToSupabase and pushes all of the gathered data to supabase
@@ -54,10 +56,25 @@ export async function pushQuestionsToSupabase(surveyData: any, surveyId: number)
 }
 
 export async function readSurveySupabase(): Promise<Survey[]> {
-
     let { data: Surveys, error } = await supabase
         .from('Surveys')
         .select('*')
     if (error) throw error;
     return Surveys ?? []
+}
+
+export async function readQuestionSupabase(): Promise<Question[]> {
+    let { data: Questions, error } = await supabase
+        .from('Questions')
+        .select('*')
+    if (error) throw error;
+    return Questions ?? []
+}
+
+export async function readAnswerSupabase(): Promise<Answer[]> {
+    let { data: Answers, error } = await supabase
+        .from('Answers')
+        .select('*')
+    if (error) throw error;
+    return Answers ?? []
 }

@@ -5,7 +5,7 @@
                 <div class="questions__text">
                     <p>{{ questionIndex + 1 }}. Question</p>
                     <div class="delete-icon" (click)="deleteInput(question.controls.question)">
-                        <img src="/assets/delete.svg">
+                        <img src="./assets/delete.svg">
                     </div>
                 </div>
                 <input formControlName="question">
@@ -28,7 +28,7 @@
                             <p>{{ answerIndex | numberToLetter }}.</p>
                             <input [formControlName]="answerIndex">
                             <div class="delete-icon" (click)="deleteInput(answer)">
-                                <img src="/assets/delete.svg">
+                                <img src="./assets/delete.svg">
                             </div>
                         </div>
                         }
@@ -39,7 +39,7 @@
                             <p class="answers__addnewanswer--borderbottom-p">
                                 Add answer
                             </p>
-                            <img src="/assets/add_circle.svg">
+                            <img src="./assets/add_circle.svg">
                         </div>
                         @if (question.controls.answers.length >= 6) {
                         <p class="answers__addnewanswer--warningmessage">

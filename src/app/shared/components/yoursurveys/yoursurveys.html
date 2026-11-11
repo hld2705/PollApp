@@ -5,15 +5,14 @@
 
         @for (survey of surveys(); track survey.id){
         @let dayValue = survey.end_date | endDatePipe;
-        @if( dayValue <= 0 || dayValue === 0 || dayValue >= 5){}
-            @else{ <div class="yoursurveys__bubbles" [routerLink]="['/survey-details']" >
+        @if( dayValue <= 0 || dayValue===0 || dayValue>= 5){}
+            @else{ <div class="yoursurveys__bubbles" [routerLink]="['/survey-details', survey.id]">
                 <p class="yoursurveys__category_name">{{survey.category_name}}</p>
                 <p class="yoursurveys__title">{{survey.title}}</p>
 
                 <div class="yoursurveys__endsinbubble">
                     @let dayValue = survey.end_date | endDatePipe;
-                    @if(dayValue === 0 || dayValue <= 0){
-                    <p>Ended</p>
+                    @if(dayValue === 0 || dayValue <= 0){ <p>Ended</p>
                         }@else{
                         <p>Ends in:</p>
                         <p>{{ dayValue }}</p>
@@ -59,14 +58,13 @@
 
     <div class="allsurveys">
         @for (survey of filteredSurveys(); track survey.id){
-        <div class="allsurveys__bubble" [routerLink]="['/survey-details']" >
+        <div class="allsurveys__bubble" [routerLink]="['/survey-details', survey.id]">
             <p class="allsurveys__category_name">{{survey.category_name}}</p>
             <p class="allsurveys__title">{{survey.title}}</p>
             <div class="yoursurveys__endsinbubble">
                 @let dayValue = survey.end_date | endDatePipe;
-                @if(dayValue === 0 || dayValue <= 0){
-                <p>Ended</p>
-                }@else{
+                @if(dayValue === 0 || dayValue <= 0){ <p>Ended</p>
+                    }@else{
                     <p>Ends in:</p>
                     <p>{{ dayValue }}</p>
                     @if (dayValue === 1) {

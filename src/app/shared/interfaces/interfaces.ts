@@ -19,3 +19,16 @@ export interface Survey {
   end_date: string;
   created_at: string;
 }
+
+export interface Question {
+  id:number;
+  survey_id:number;
+  text:string;
+  multiple_answers:boolean
+}
+
+export interface Answer{
+  id: number;
+  question_id: number;
+  text: string
+}

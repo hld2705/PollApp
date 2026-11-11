@@ -1,0 +1,47 @@
+@use '../../../../mixins/main-mixin.scss' as mx;
+@use '../createnewsurvey/createnewsurvey';
+@use '../../../layout/header/header/header.scss';
+
+:host {
+    @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+    min-height: 100vh;
+    background-color: white;
+}
+
+.surveydetails {
+    @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+    width: 85%;
+
+    &__header {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
+        width: 100%;
+    }
+
+    &__leftbubble {
+        @include mx.flex-center($align: center, $flex-direction: column, $justify: center);
+        gap: 8px;
+        border-top-right-radius: 160px;
+        padding: 40px;
+        background-color: #8E70991A;
+        width: 100%;
+
+        h1 {
+            @include mx.nerko-one($family: 'Nerko One', $weight: 400, $size: 56px);
+            color: #EE9236;
+        }
+
+        p {
+            @include mx.mullish($size: 16px, $weight: 500, $color: 'black');
+        }
+    }
+
+    &__category--enddate {
+        @include mx.flex-center($align: center, $flex-direction: row, $justify: space-between);
+        width: 100%;
+
+        p {
+            @include mx.mullish($size: 14px, $weight: 500, $color: 'black');
+            margin: 0px;
+        }
+    }
+}

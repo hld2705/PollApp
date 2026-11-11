@@ -1,1 +1,25 @@
-<p>surveydetails works!</p>
+<div class="surveydetails">
+    <div class="surveydetails__header">
+        <img src="./assets/Logo.svg">
+        <button [routerLink]="['/new-survey']" class="underheadertext__newsurveybutton">Create survey <img
+                src="./assets/add_circle.png"></button>
+    </div>
+
+    <div class="surveydetails__leftbubble">
+        <div class="draft">
+            <div class="draft__bubble">
+                <p>Published</p>
+            </div>
+        </div>
+        <div class="surveydetails__category--enddate">
+            <p>Ends on {{survey()?.end_date | date:'dd.MM.yyyy' }}</p>
+            <p>Category: {{survey()?.category_name}}</p>
+        </div>
+        <h1>{{survey()?.title}}</h1>
+        <p>{{survey()?.description}}</p>
+        <div>
+           
+        </div>
+    </div>
+
+</div>
